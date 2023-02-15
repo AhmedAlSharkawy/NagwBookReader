@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reader</title>
+  <link rel="stylesheet" href="./css/epub.css" />
+  <link rel="stylesheet" href="./css/app.css" />
+</head>
+
+<body colormood="default">
+  <div class="task-runner__container" id="taskRunnerNav">
+    <div class="task-runner">
+      <div class="setting__container">
+        <button type="button" class="setting__btn" onclick="toggleSetting()" alt="Setting button">
+          <img class="navigation__icon" src="./icons/setting.png" width="16" height="16" />
+        </button>
+        <div class="setting__menu" id="settingMenu">
+          <div class="setting__menu-container">
+            <div class="setting__font-size">
+              <button id="fontSizeSmaller"
+                class="setting__font-size-btn setting__font-size-btn-smaller"
+                onclick="changeFontSize('smaller')">
+                A
+              </button>
+              <span id="fontSizeSmallerPercentage" class="setting__font-size-btn setting__font-size-btn-percentage">100%</span>
+              <button id="fontSizeBigger" 
+                class="setting__font-size-btn setting__font-size-btn-larger"
+                onclick="changeFontSize('bigger')">
+                A
+              </button>
+            </div>
+            <div class="setting__color-container">
+              <h5>Color Mode</h5>
+              <div class="setting__color">
+                <label class="setting__color-item setting__color-item_white">
+                  <input type="radio" checked="checked" name="colorMood" value="default">
+                  <span class="setting__color-checkmark"></span>
+                </label>
+                <label class="setting__color-item setting__color-item_black">
+                  <input type="radio" name="colorMood" value="dark">
+                  <span class="setting__color-checkmark"></span>
+                </label>
+                <label class="setting__color-item setting__color-item_pink">
+                  <input type="radio" name="colorMood" value="pink">
+                  <span class="setting__color-checkmark"></span>
+                </label>
+              </div>
+            </div>
+            <div class="setting__font-family-btn" onclick="toggleFontFamilySetting()">
+              <h5>Font</h5>
+              <div class="setting__font-family-title">
+                Arial
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="setting__menu" id="fontFamilySettingMenu">
+          <div class="setting__menu-container">
+            <button class="setting__font-family-back" onclick="toggleFontFamilySetting()">
+              <img class="navigation__icon" src="./icons/next.png" width="12" height="16" />
+              Back
+            </button>
+            <div class="setting__font-family-container">
+              <label class="setting__font-family">
+                <input type="radio" name="fontFamily" value="noto">
+                <span class="setting__font-family-checkmark">Noto Naskh Arabic</span>
+              </label>
+              <label class="setting__font-family">
+                <input type="radio" name="fontFamily" value="tahoma">
+                <span class="setting__font-family-checkmark">Tahoma</span>
+              </label>
+              <label class="setting__font-family">
+                <input type="radio" checked="checked" name="fontFamily" value="arial">
+                <span class="setting__font-family-checkmark">Arial</span>
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="navigation__container">
+        <button type="button" class="navigation__btn navigation__btn_next" onclick="loadNextChapter()" alt="Next Chapter">
+          <img class="navigation__icon" src="./icons/nextChapter.png" width="16" height="16" />
+        </button>
+        <button type="button" class="navigation__btn navigation__btn_next" onclick="loadNextPage()" alt="Next Page">
+          <img class="navigation__icon" src="./icons/next.png" width="16" height="16" />
+        </button>
+        <div class="navigation__count">
+          <span class="navigation__count__current"></span>
+          /
+          <span class="navigation__count__book"></span>
+        </div>
+        <button type="button" class="navigation__btn navigation__btn_prev" onclick="loadPrevPage()" alt="Prev Page">
+          <img class="navigation__icon" src="./icons/prev.png" width="16" height="16" />
+        </button>
+        <button type="button" class="navigation__btn navigation__btn_prev" onclick="loadPrevChapter()" alt="Prev Chapter">
+          <img class="navigation__icon" src="./icons/prevChapter.png" width="16" height="16" />
+        </button>
+      </div>
+    </div>
+  </div>
+  
+  <div class="book-container">
+    <div class="book-wrapper book__wrapper">
+      <div class="book__container" id="bookContainer">
+        <div id="bookPage"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="./js/app.js"></script>
+</body>
+
+</html>

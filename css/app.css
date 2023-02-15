@@ -1,0 +1,248 @@
+:root {
+  --borderColor: #cccccc;
+  --zIndexMax: 10;
+  --navigationBtnSize: 42px;
+  --colorIconSize: 40px;
+}
+
+*,
+::after,
+::before {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+html {
+  font-size: 18px;
+  height: 100%;
+}
+
+body {
+  font-size: 18px;
+  padding: 0;
+}
+
+button:disabled,
+button[disabled] {
+  cursor: default;
+}
+button:disabled img,
+button[disabled] img {
+  opacity: 0.5;
+}
+.book-container {
+  padding: 50px 20px;
+}
+.book__container {
+  overflow: hidden;
+  width: 100%;
+  height: calc(100vh - 100px);
+  font-family: arial;
+}
+#taskRunnerNav {
+  display: none;
+}
+.task-runner__container {
+  position: fixed;
+  z-index: var(--zIndexMax);
+  width: 100%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: white;
+  color: black;
+  border-top: 1px solid var(--borderColor);
+  padding: 15px 20px;
+}
+.task-runner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.navigation__container {
+  display: flex;
+  gap: 6px;
+}
+.navigation__btn, .setting__btn {
+  width: var(--navigationBtnSize);
+  height: var(--navigationBtnSize);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  border: 1px solid var(--borderColor);
+  cursor: pointer;
+}
+.navigation__icon {
+  --iconSize: 16px;
+
+  width: var(--iconSize);
+  height: var(--iconSize);
+}
+.setting__container {
+  position: relative;
+}
+#settingMenu, #fontFamilySettingMenu {
+  display: none;
+}
+.setting__menu {
+  position: absolute;
+  width: 350px;
+  bottom: var(--navigationBtnSize);
+  left: 0;
+  background-color: white;
+  color: black;
+  border-radius: 1.4rem;
+  box-shadow: 0 0 30px rgb(0 0 0 / 20%);
+  z-index: var(--zIndexMax);
+}
+.setting__menu-container {
+  display: flex;
+  flex-direction: column;
+}
+.setting__font-size {
+  display: flex;
+  justify-content: space-around;
+  border-bottom: 1px solid var(--borderColor);
+}
+.setting__font-size-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-basis: 33%;
+  padding: 15px 0;
+  background: transparent;
+  border: none;
+}
+.setting__font-size-btn-smaller {
+  font-size: 15px;
+}
+.setting__font-size-btn-larger {
+  font-size: 24px;
+}
+.setting__font-size-btn-percentage {
+  font-size: 18px;
+  border-right: 1px solid var(--borderColor);
+  border-left: 1px solid var(--borderColor);
+}
+.setting__color-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 10px;
+  border-bottom: 1px solid var(--borderColor);
+}
+.setting__color {
+  position: relative;
+  display: flex;
+  gap: 10px;
+}
+.setting__color-item {
+  position: relative;
+  cursor: pointer;
+  width: var(--colorIconSize);
+  height: var(--colorIconSize);
+  border-radius: 50%;
+  border: 1px solid var(--borderColor);
+}
+.setting__color-item_white {
+  background: white;
+}
+.setting__color-item_black {
+  background: black;
+}
+.setting__color-item_pink {
+  background: #f6efdf;
+}
+.setting__color-item input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.setting__color-checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  border-radius: 50%;
+}
+
+.setting__color-item  input:checked ~ .setting__color-checkmark {
+  border: 2px solid black !important;
+}
+
+.setting__color-item.setting__color-item_black input:checked ~ .setting__color-checkmark {
+  border: 2px solid white !important;
+}
+
+/* White color mood */
+body[colormood="defult"] .book-container {
+  background-color: white;
+  color: black;
+}
+
+/* Dark color mood */
+body[colormood="dark"] .book-container {
+  background-color: black;
+  color: white;
+}
+body[colormood="dark"] .blockquote {
+  background-color: #111111;
+}
+
+/* Pink color mood */
+body[colormood="pink"] .book-container {
+  background-color: #f6efdf;
+  color: black;
+}
+body[colormood="pink"] .blockquote {
+  background-color: #f2e4c5;
+}
+
+.setting__font-family-container {
+  display: flex;
+  flex-direction: column;
+}
+.setting__font-family {
+  width: 100%;
+  padding: 20px 15px;
+  color: black;
+  position: relative;
+  border-bottom: 1px solid var(--borderColor);
+  cursor: pointer;
+}
+.setting__font-family-checkmark {
+  width: 100%;
+  height: 100%;
+}
+.setting__font-family input:checked ~ .setting__font-family-checkmark ::after {
+  content: "\f00c";
+  font-family: "Font-Awesome";
+  margin-left: auto;
+}
+.setting__font-family-back {
+  font-size: 16px;
+  background: transparent;
+  border: none;
+  padding: 15px;
+  display: flex;
+  gap: 3px;
+  cursor: pointer;
+}
+.setting__font-family-btn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 10px;
+  cursor: pointer;
+}
+.navigation__count {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0 15px;
+}
